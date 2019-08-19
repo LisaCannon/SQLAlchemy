@@ -106,7 +106,7 @@ def start_tob(start):
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return a list of all temperatures"""
+    """Return a list of all temperatures starting at date entered"""
     # Query all dates
     results = session.query(func.min(Measurements.tobs), func.avg(Measurements.tobs),func.max(Measurements.tobs)).\
             filter(Measurements.date >= dt.datetime.strptime(start, "%Y-%m-%d")).all()
@@ -127,7 +127,7 @@ def se_tob(start,end):
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return a list of all temperatures"""
+    """Return a list of all temperatures between the dates entered"""
     # Query all dates
     results = session.query(func.min(Measurements.tobs), func.avg(Measurements.tobs),func.max(Measurements.tobs)).\
             filter(Measurements.date >= dt.datetime.strptime(start, "%Y-%m-%d")).\
